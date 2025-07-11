@@ -1,4 +1,11 @@
-package org.example.base.test;
+package org.example.test;
+
+import org.testng.annotations.Test;
 
 public class LoginToNaukari {
+    @Test
+    public void PositiveLoginTest(){
+
+    }
+
 }
