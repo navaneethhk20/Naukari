@@ -11,7 +11,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 public class DriverManager {
     public static WebDriver driver;
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver;
     }
 
