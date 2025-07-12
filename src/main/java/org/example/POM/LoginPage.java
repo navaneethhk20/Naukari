@@ -19,10 +19,25 @@ public class LoginPage {
 
     public void loginTestPositive(String user, String pwd) {
         driver.get(PropertiesReader.readKey("url"));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.findElement(login).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.findElement(usernameField).sendKeys(user);
         driver.findElement(passwordField).sendKeys(pwd);
         driver.findElement(loginbutton).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
