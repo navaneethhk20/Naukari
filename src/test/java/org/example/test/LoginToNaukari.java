@@ -5,8 +5,10 @@ import org.example.POM.ViewProfile;
 import org.example.base.CommonToAllTest;
 import org.example.driver.DriverManager;
 import org.example.utils.PropertiesReader;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 
 public class LoginToNaukari extends CommonToAllTest {
 
@@ -31,9 +33,11 @@ public class LoginToNaukari extends CommonToAllTest {
 
         viewProfile.clickViewProfile();
         viewProfile.clickonupdatedResume();
+        String successMsg = viewProfile.resumeUploaded().getText();
+        Assert.assertEquals(successMsg, PropertiesReader.readKey("successMessage"));
 
-        String latest = dashboardPage.latestUpdated();
-        Assert.assertEquals(latest,PropertiesReader.readKey("latestupdate"));
+//        String latest = dashboardPage.latestUpdated();
+//        Assert.assertEquals(latest,PropertiesReader.readKey("latestupdate"));
     }
 
 }
