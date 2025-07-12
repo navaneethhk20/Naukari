@@ -25,5 +25,4 @@ public class LoginPage extends CommonToAllPages {
         visibiltyOfElement(passwordField,pwd);
         clickElement(loginbutton);
     }
-
 }
