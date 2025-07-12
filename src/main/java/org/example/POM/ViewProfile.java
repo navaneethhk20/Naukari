@@ -1,9 +1,10 @@
 package org.example.POM;
 
+import org.example.base.CommonToAllPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ViewProfile{
+public class ViewProfile extends CommonToAllPages {
 
     WebDriver driver;
 
@@ -14,22 +15,12 @@ public class ViewProfile{
     private By updateResume = By.xpath("//input[@value=\"Update resume\"]");
 
     public void clickViewProfile(){
-        driver.findElement(DashboardPage.viewProfileButton).click();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        visibiltyOfElementAndClick(DashboardPage.viewProfileButton);
 
     }
 
     public void clickonupdatedResume(){
-        driver.findElement(updateResume).click();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        visibiltyOfElementAndClick(updateResume);
     }
 
 }

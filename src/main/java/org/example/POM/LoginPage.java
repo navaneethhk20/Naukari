@@ -1,10 +1,10 @@
 package org.example.POM;
 
-import org.example.utils.PropertiesReader;
+import org.example.base.CommonToAllPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends CommonToAllPages {
      WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -18,26 +18,12 @@ public class LoginPage {
     private  By passwordField = By.xpath("//input[@placeholder=\"Enter your password\"]");
 
     public void loginTestPositive(String user, String pwd) {
-        driver.get(PropertiesReader.readKey("url"));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        driver.findElement(login).click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        driver.findElement(usernameField).sendKeys(user);
-        driver.findElement(passwordField).sendKeys(pwd);
-        driver.findElement(loginbutton).click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        openNaukari();
+        visibiltyOfElement(login);
+        clickElement(login);
+        visibiltyOfElement(usernameField,user);
+        visibiltyOfElement(passwordField,pwd);
+        clickElement(loginbutton);
     }
 
 }
