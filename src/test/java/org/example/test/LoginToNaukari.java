@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 
 
 public class LoginToNaukari extends CommonToAllTest {
-
-    @Test
+   @Test
     public void LoginAndVerifyUserDetails() {
+
         DashboardPage dashboardPage = new DashboardPage(DriverManager.getDriver());
         String username = dashboardPage.userNameField();
 
@@ -25,17 +25,13 @@ public class LoginToNaukari extends CommonToAllTest {
       //  Assert.assertEquals(lastUpdated,PropertiesReader.readKey("lastupdate"));
 
     }
-
-    @Test()
+    @Test
     public void ResumeUpload() {
+
         ViewProfile viewProfile = new ViewProfile(DriverManager.getDriver());
         viewProfile.clickViewProfile();
         viewProfile.clickonupdatedResume();
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         String successMsg = viewProfile.resumeUploaded().getText();
         Assert.assertEquals(successMsg, PropertiesReader.readKey("successMessage"));
 

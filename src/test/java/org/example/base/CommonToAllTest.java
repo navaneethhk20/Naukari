@@ -3,25 +3,24 @@ package org.example.base;
 import org.example.POM.LoginPage;
 import org.example.driver.DriverManager;
 import org.example.utils.PropertiesReader;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 public class CommonToAllTest {
-    @BeforeMethod
-    public void initialiseBrowser(){
+
+    @BeforeClass
+    public void setUpClass() {
         DriverManager.BrowserInit();
+        LoginToNaukari();
     }
 
-
-    @AfterMethod
-    public void teardown(){
+    @AfterClass
+    public void tearDownClass() {
         DriverManager.tear();
     }
 
-    @BeforeMethod
-    public void loginset(){
-        LoginToNaukari();
-    }
 
     public void LoginToNaukari(){
         LoginPage loginPage = new LoginPage(DriverManager.getDriver());
