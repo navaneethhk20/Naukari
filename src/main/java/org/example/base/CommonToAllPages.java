@@ -54,9 +54,11 @@ public class CommonToAllPages {
     public void visibiltyOfElementAndClick(By elementLocation){
         new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation)).click();
     }
-    public void presenceOfElement(By elementLocation){
-        new WebDriverWait(getDriver(),Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(elementLocation));
+    public WebElement presenceOfElement(By elementLocation){
+        new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(elementLocation));
+        return null;
     }
+    
 
     public WebElement getElement(By key) {
         return getDriver().findElement(key);
