@@ -47,9 +47,22 @@ public class CommonToAllPages {
     public void presenceOfElement(By elementLocation, String key){
          new WebDriverWait(getDriver(),Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(elementLocation)).sendKeys(key);
     }
+    public void elementToBeClickable(By elementLocation){
+        new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(elementLocation));
+    }
+
+    public void elementToBeClickable(By elementLocation, String key){
+        new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(elementLocation)).sendKeys(key);
+    }
+
+    public void uploadFile(By fileInputLocator, String filePath) {
+        WebElement fileInput = new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(fileInputLocator));
+        fileInput.sendKeys(filePath);
+    }
 
     public void visibiltyOfElement(By elementLocation){
-        new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
+        new WebDriverWait(getDriver(),Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
     }
     public void visibiltyOfElementAndClick(By elementLocation){
         new WebDriverWait(getDriver(),Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation)).click();
@@ -66,7 +79,7 @@ public class CommonToAllPages {
 
     public void customWait(){
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
