@@ -18,11 +18,11 @@ public class LoginToNaukari extends CommonToAllTest {
         String username = dashboardPage.userNameField();
 
         String profilebutton = dashboardPage.viewProfileBUtton();
-        String lastUpdated = dashboardPage.lastUpdated();
+        String lastUpdate = dashboardPage.lastUpdated();
 
         Assert.assertEquals(username, PropertiesReader.readKey("LoggedInuser"));
         Assert.assertEquals(profilebutton, PropertiesReader.readKey(("viewprofile")));
-      //  Assert.assertEquals(lastUpdated,PropertiesReader.readKey("lastupdate"));
+        Assert.assertEquals(lastUpdate,PropertiesReader.readKey("lastupdate"));
 
     }
     @Test
@@ -30,13 +30,14 @@ public class LoginToNaukari extends CommonToAllTest {
 
         ViewProfile viewProfile = new ViewProfile(DriverManager.getDriver());
         viewProfile.clickViewProfile();
+
         viewProfile.clickonupdatedResume();
 
         String successMsg = viewProfile.resumeUploaded().getText();
-        Assert.assertEquals(successMsg, PropertiesReader.readKey("successMessage"));
+        Assert.assertEquals(successMsg, PropertiesReader.readKey("successMessage"),"Resume upload failed and success message is not visible");
 
-//        String latest = dashboardPage.latestUpdated();
-//        Assert.assertEquals(latest,PropertiesReader.readKey("latestupdate"));
+        String latest = viewProfile.lastupdated();
+        Assert.assertEquals(latest,PropertiesReader.readKey("latestupdate"),"last updated is not displayed");
     }
 
 }

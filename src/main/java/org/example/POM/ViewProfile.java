@@ -1,9 +1,11 @@
 package org.example.POM;
 
 import org.example.base.CommonToAllPages;
+import org.example.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,22 +21,36 @@ public class ViewProfile extends CommonToAllPages {
     this.driver =driver;
     }
 
-    private By updateResume = By.xpath("//input[@value=\"Update resume\"]");
+
+    private By updateResumeButton = By.xpath("//span[text()='Upload resume']");
+    private By fileInput = By.xpath("//input[@type='file']");
     private By successMessage = By.xpath("//p[text()='Resume has been successfully uploaded.']");
+    String path = "C:\\Users\\Navaneeth H K\\IdeaProjects\\Naukari\\src\\main\\resources\\Navaneeth H.K.pdf";
+    private By lastupdate = By.xpath("//span[contains(text(),'Today')]");
 
     public void clickViewProfile(){
         visibiltyOfElementAndClick(DashboardPage.viewProfileButton);
     }
 
     public void clickonupdatedResume(){
-        WebElement upload = presenceOfElement(updateResume);
-        upload.click();
-        visibiltyOfElementAndClick(updateResume);
+        try {
+            uploadFile(fileInput, path);
+        } catch (Exception e) {
+            customWait();
+            clickElement(updateResumeButton);
+            visibiltyOfElement(updateResumeButton);
+            uploadFile(fileInput, path);
+        }
     }
 
     public WebElement resumeUploaded(){
-        visibiltyOfElement(successMessage);
+        presenceOfElement(successMessage);
         return getElement(successMessage);
+    }
+
+    public String lastupdated(){
+        visibiltyOfElement(lastupdate);
+        return getText(lastupdate);
     }
 
 }
