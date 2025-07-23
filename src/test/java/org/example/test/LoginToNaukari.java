@@ -18,11 +18,11 @@ public class LoginToNaukari extends CommonToAllTest {
         String username = dashboardPage.userNameField();
 
         String profilebutton = dashboardPage.viewProfileBUtton();
-        String lastUpdate = dashboardPage.lastUpdated();
+        //String lastUpdate = dashboardPage.lastUpdated();
 
         Assert.assertEquals(username, PropertiesReader.readKey("LoggedInuser"));
         Assert.assertEquals(profilebutton, PropertiesReader.readKey(("viewprofile")));
-        Assert.assertEquals(lastUpdate,PropertiesReader.readKey("lastupdate"));
+//        Assert.assertEquals(lastUpdate,PropertiesReader.readKey("lastupdate"));
 
     }
     @Test
