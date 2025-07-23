@@ -79,7 +79,7 @@ public class CommonToAllPages {
 
     public void customWait(){
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
